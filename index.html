@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generador Aleatorio — LCG / MCG</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header minimalista -->
+  <header class="site-header">
+    <div class="brand">Generador de Números Aleatorios</div>
+    <nav class="nav">
+      <a href="#" class="active">Inicio</a>
+      <a href="#lineal">Lineal</a>
+      <a href="#multiplicativo">Multiplicativo</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Intro -->
+    <section class="hero card">
+      <h1 class="title">Modelado & Simulación</h1>
+      <p class="muted">
+        Implementación en JavaScript de los generadores congruenciales 
+        <strong>Lineal (LCG)</strong> y <strong>Multiplicativo (MCG)</strong>.
+        Usa los formularios para definir parámetros y genera la tabla con los resultados.
+      </p>
+    </section>
+
+    <!-- LCG -->
+    <section id="lineal" class="card">
+      <div class="card-head">
+        <h2>Algoritmo Lineal (LCG)</h2>
+        <div class="btn-group">
+          <button id="lcg-run" class="btn btn-primary">Generar</button>
+          <button id="lcg-csv" class="btn btn-ghost">Descargar CSV</button>
+          <button id="lcg-clear" class="btn btn-danger">Limpiar</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <label><span class="cap">X<sub>0</sub></span>
+        <input id="lcg-x0" type="number" placeholder="Semilla (0 ≤ X0 < 2^P)" />
+        </label>
+        <label>K
+          <input id="lcg-k" type="number" placeholder="K" />
+        </label>
+        <label>c
+          <input id="lcg-c" type="number" placeholder="c (incremento)" />
+        </label>
+        <label>P
+          <input id="lcg-p" type="number" placeholder="P (m = 2^P)" />
+        </label>
+        <label>D (dec.)
+          <select id="lcg-d">
+            <option>2</option><option selected>4</option><option>6</option><option>8</option>
+          </select>
+        </label>
+        <label>N (cantidad)
+          <input id="lcg-n" type="number" value="10" min="1" />
+        </label>
+      </div>
+
+      <div id="lcg-hint" class="hint"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>i</th>
+              <th>X<sub>i-1</sub></th>
+              <th>Operación</th>
+              <th>X<sub>i</sub></th>
+              <th>r<sub>i</sub></th>
+            </tr>
+          </thead>
+          <tbody id="lcg-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MCG -->
+    <section id="multiplicativo" class="card">
+      <div class="card-head">
+        <h2>Algoritmo Multiplicativo (MCG)</h2>
+        <div class="btn-group">
+          <button id="mcg-run" class="btn btn-primary">Generar</button>
+          <button id="mcg-csv" class="btn btn-ghost">Descargar CSV</button>
+          <button id="mcg-clear" class="btn btn-danger">Limpiar</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <label><span class="cap">X<sub>0</sub></span>
+        <input id="mcg-x0" type="number" placeholder="Semilla impar (0 ≤ X0 < 2^P)" />
+        </label>
+        <label>K
+          <input id="mcg-k" type="number" placeholder="K" />
+        </label>
+        <label>c
+          <input id="mcg-c" type="number" value="0" disabled />
+        </label>
+        <label>P
+          <input id="mcg-p" type="number" placeholder="P (m = 2^P)" />
+        </label>
+        <label>D (dec.)
+          <select id="mcg-d">
+            <option>2</option><option selected>4</option><option>6</option><option>8</option>
+          </select>
+        </label>
+        <label>N (cantidad)
+          <input id="mcg-n" type="number" value="10" min="1" />
+        </label>
+      </div>
+
+      <div id="mcg-hint" class="hint"></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>i</th>
+              <th>X<sub>i-1</sub></th>
+              <th>Operación</th>
+              <th>X<sub>i</sub></th>
+              <th>r<sub>i</sub></th>
+            </tr>
+          </thead>
+          <tbody id="mcg-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    Hecho en JS Vanilla · UI monocromática elegante
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
